@@ -1,18 +1,18 @@
 import './App.css'
 
-import useToggle from './useToggle'
+import { useToggle } from './useToggle'
 
 function App() {
-  const [state, setState] = useToggle(false)
+  const [value, toggle] = useToggle(['blue', 'orange', 'cyan', 'teal'])
+  console.log(value)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>{state.toString()}</p>
-        <button onClick={() => setState()}>toggle</button>
-        <button onClick={() => setState(false)}>false</button>
-        <button onClick={() => setState(true)}>true</button>
-      </header>
-    </div>
+    <>
+      <p>{value}</p>
+      <button onClick={() => toggle()}>{value}</button>
+      <button onClick={() => toggle('orange')}>Change</button>
+      <button onClick={() => toggle('reset')}>Reset</button>
+    </>
   )
 }
 
